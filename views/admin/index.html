@@ -1,0 +1,37 @@
+{{define "admin.index"}}
+{{template "admin.header" .}}
+<body>
+    {{template "admin.nav" .}}
+    <div class="main">
+        <div class="container typecho-dashboard">
+            <div class="typecho-page-title">
+                <h2>网站概要</h2>
+            </div>
+            <div class="row typecho-page-main">
+                <div class="col-mb-12 welcome-board" role="main">
+                    <p>目前有 <em>{{PostsCount}}</em> 篇文章<br>点击下面的链接快速开始:</p>
+                    <ul id="start-link" class="clearfix">
+                        <li><a href="{{URL `post.new`}}">撰写新文章</a></li>
+                        <li><a href="{{URL `post.list`}}">管理文章</a></li>
+                    </ul>
+                </div>
+                <div class="col-mb-12 col-tb-4" role="complementary">
+                    <section class="latest-link">
+                        <h3>最近发布的文章</h3>
+                        <ul>
+                        {{range RecentPosts}}
+                            <li>
+                                <span>{{DateTime .Created `1.2`}}</span>
+                                <a href="post/edit" class="title" target="_blank">{{.Title}}</a>
+                            </li>
+                        {{end}}
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{template "admin.footer" .}}
+</body>
+</html>
+{{end}}

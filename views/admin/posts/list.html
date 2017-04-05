@@ -1,0 +1,88 @@
+{{define "post.list"}}
+{{template "admin.header" .}}
+<body>
+    {{template "admin.nav" .}}
+    <div class="main">
+        <div class="body container">
+            <div class="typecho-page-title">
+                <h2>管理文章<a href="{{URL `post.new`}}">新增</a></h2>
+            </div>
+            <div class="row typecho-page-main" role="main">
+                <div class="col-mb-12 typecho-list">
+                    <div class="typecho-list-operate clearfix">
+                        <form method="post">
+                            <div class="operate">
+                                <label><i class="sr-only">全选</i><input type="checkbox" class="typecho-table-select-all" /></label>
+                                <div class="btn-group btn-drop">
+                                    <button class="btn dropdown-toggle btn-s" type="button"><i class="sr-only">操作</i>选中项 <i class="i-caret-down"></i></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a lang="你确认要删除这些文章吗?" href="{{URL `post.delete`}}">删除</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <form method="post" name="manage_posts" class="operate-form">
+                        <div class="typecho-table-wrap">
+                            <table class="typecho-list-table">
+                                <colgroup>
+                                    <col width="20" />
+                                    <col width="6%" />
+                                    <col width="45%" />
+                                    <col width="" />
+                                    <col width="18%" />
+                                    <col width="16%" />
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th>标题</th>
+                                        <th>作者</th>
+                                        <th>日期</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{range AllPosts}}
+                                    <tr id="post-4">
+                                        <td><input type="checkbox" value="{{.Id}}" name="id" /></td>
+                                        <td><a class="balloon-button size-1">{{.Id}}</a></td>
+                                        <td>
+                                            <a href="{{URL `post.edit` `:id` (.Id)}}">{{.Title}}</a>
+                                            <a href="{{URL `post.edit` `:id` (.Id)}}" title="编辑 {{.Title}}"><i class="i-edit"></i></a>
+                                            <a href="post/edit" title="浏览 {{.Title}}" target="_blank"><i class="i-exlink"></i></a>
+                                        </td>
+                                        <td>{{User.Username}}</td>
+                                        <td>{{DateTime .Created `2006-01-02 15:04:05`}}</td>
+                                    </tr>
+                                    {{end}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{template "admin.footer" .}}
+    {{template "admin.flash" .}}
+    <script>
+        (function () {
+            $(document).ready(function () {
+                $('.typecho-list-table').tableSelectable({
+                    checkEl: 'input[type=checkbox]',
+                    rowEl: 'tr',
+                    selectAllEl: '.typecho-table-select-all',
+                    actionEl: '.dropdown-menu a,button.btn-operate'
+                });
+                $('.btn-drop').dropdownMenu({
+                    btnEl: '.dropdown-toggle',
+                    menuEl: '.dropdown-menu'
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
+{{end}}

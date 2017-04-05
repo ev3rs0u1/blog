@@ -1,0 +1,21 @@
+{{define "home"}}
+{{template "header" .}}
+<body>
+    <main>
+        <div class="container">
+            <nav>
+                <h1>Posts</h1>
+                <ol>
+                    {{range AllPosts}}
+                    <li>
+                        <a href="{{URL `post` `:id` (.Id)}}">{{.Title}}&nbsp;&nbsp;<time class="text-muted">{{DateTime .Created `2006.01.02`}}</time>
+                        </a>
+                    </li>
+                    {{end}}
+                </ol>
+            </nav>
+        </div>
+    </main>
+</body>
+</html>
+{{end}}

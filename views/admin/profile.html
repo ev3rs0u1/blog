@@ -1,0 +1,75 @@
+{{define "admin.profile"}}
+{{template "admin.header" .}}
+<body>
+    {{template "admin.nav" .}}
+    <div class="main">
+        <div class="body container">
+            <div class="typecho-page-title">
+                <h2>个人设置</h2>
+            </div>
+            <div class="row typecho-page-main">
+                <div class="col-mb-12 col-tb-3">
+                    <p>
+                        <a href="http://gravatar.com/emails/" title="在 Gravatar 上修改头像"><img class="profile-avatar" src="http://www.gravatar.com/avatar/20a5844bc608d51cdbe28b74495f809d?s=220&amp;r=X&amp;d=mm"
+                                alt="{{User.Username}}" /></a>
+                    </p>
+                    <h2>{{User.Username}}</h2>
+                    <p>{{User.Username}}</p>
+                    <p>目前有 <em>{{PostsCount}}</em> 篇文章.</p>
+                </div>
+                <div class="col-mb-12 col-tb-6 col-tb-offset-1 typecho-content-panel" role="form">
+                    <section>
+                        <h3>个人资料</h3>
+                        <form action="profile" method="post">
+                            <ul class="typecho-option" id="typecho-option-item-screenName-0">
+                                <li><label class="typecho-label" for="screenName-0-1"> 作者名称</label>
+                                    <input id="screenName-0-1" name="author" type="text" class="text" value="{{User.Author}}" />
+                                    <p class="description"> 作者名称可以与用户名不同, 用于前台显示.<br/>如果你将此项留空, 将默认使用用户名.</p>
+                                </li>
+                            </ul>
+                            <ul class="typecho-option" id="typecho-option-item-url-1">
+                                <li><label class="typecho-label" for="url-0-2"> GitHub地址</label>
+                                    <input id="url-0-2" name="url" type="text" class="text" value="{{User.Url}}" />
+                                    <input type="hidden" name="profile" value="true" />
+                                    <p class="description"> GitHub地址, 请用 <code>http://</code> 开头.</p>
+                                </li>
+                            </ul>
+                            <ul class="typecho-option typecho-option-submit" id="typecho-option-item-submit-4">
+                                <li>
+                                    <button type="submit" class="btn primary"> 更新资料</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </section>
+                    <br/>
+                    <section id="change-password">
+                        <h3>密码修改</h3>
+                        <form action="profile" method="post">
+                            <ul class="typecho-option" id="typecho-option-item-password-10">
+                                <li><label class="typecho-label" for="password-0-11"> 新密码</label> <input id="password-0-11" name="npassword"
+                                        type="password" class="w-60" />
+                                    <p class="description"> 为管理员分配一个新密码.<br/>建议使用特殊字符与字母、数字的混编样式,以增加系统安全性.</p>
+                                </li>
+                            </ul>
+                            <ul class="typecho-option" id="typecho-option-item-confirm-11">
+                                <li><label class="typecho-label" for="confirm-0-12"> 确认新密码</label> <input id="confirm-0-12" name="cpassword"
+                                        type="password" class="w-60" />
+                                    <p class="description"> 请确认你的密码, 与上面输入的密码保持一致.</p>
+                                </li>
+                            </ul>
+                            <ul class="typecho-option typecho-option-submit" id="typecho-option-item-submit-13">
+                                <li>
+                                    <button type="submit" class="btn primary"> 修改密码</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{template "admin.footer" .}}
+    {{template "admin.flash" .}}
+</body>
+</html>
+{{end}}

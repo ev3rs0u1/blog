@@ -1,0 +1,27 @@
+{{define "post"}}
+{{template "header" .}}
+<body>
+    <header>
+        <div class="toolbar">
+            <div class="toolbar-action">
+                <a href="{{URL `index`}}" class="button button-icon"><i class="material-icons">arrow_back</i></a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <article class="markdown-body">
+                <header>
+                    <h1>{{.Post.Title}}</h1>
+                    <p class="meta">
+                        By <a href="http://github.com/ev3rs0u1">{{User.Author}}</a> on {{DateTime .Post.Created `2006.01.02`}}
+                    </p>
+                </header>
+                {{.Post.Content | Markdown | HTML}}
+            </article>
+        </div>
+    </main>
+    <script src="/js/prism.js"></script>
+</body>
+</html>
+{{end}}

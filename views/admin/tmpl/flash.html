@@ -1,0 +1,31 @@
+{{define "admin.flash"}}
+<script src="/admin/js/jquery.js"></script>
+<script src="/admin/js/jquery-ui.js"></script>
+<script src="/admin/js/typecho.js"></script>
+{{with .Flash.ErrorMsg}}
+<script>
+    var pop = $('<div class="message popup error" style="position: fixed; top: 0px; display: block;">'
+        + '<ul><li>'
+        + '{{.}}'
+        + '</li></ul></div>');
+    pop.prependTo(document.body);
+    pop.effect('highlight', { color: '#FBC2C4' })
+        .delay(2000).slideUp(function () {
+            $(this).remove();
+        });
+</script>
+{{end}}
+{{with .Flash.SuccessMsg}}
+<script>
+    var pop = $('<div class="message popup success" style="position: fixed; top: 0px; display: block;">'
+        + '<ul><li>'
+        + '{{.}}'
+        + '</li></ul></div>');
+    pop.prependTo(document.body);
+    pop.effect('highlight', { color: '#C5CAAB' })
+        .delay(1500).slideUp(function () {
+            $(this).remove();
+        });
+</script>
+{{end}}
+{{end}}

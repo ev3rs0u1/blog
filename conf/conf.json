@@ -1,0 +1,19 @@
+{
+    "debug": true,
+    "http_addr": "0.0.0.0:80",
+    "public_dir": "public",
+    "secret_key": "!!!WHAT.THE.FUCK!!!",
+    "admin": {
+        "route": "admin",
+        "username": "admin",
+        "password": "123456"
+    },
+    "database": {
+        "db_type": "mysql",
+        "db_host": "localhost",
+        "db_port": "3306",
+        "db_name": "blog",
+        "db_user": "root",
+        "db_pass": "root"
+    }
+}

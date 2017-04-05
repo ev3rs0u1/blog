@@ -1,0 +1,54 @@
+{{define "post.edit"}}
+{{template "admin.header" .}}
+<body>
+    {{template "admin.nav" .}}
+    <div class="main">
+        <div class="body container">
+            <div class="typecho-page-title">
+                <h2>编辑文章</h2>
+            </div>
+            <div class="row typecho-page-main typecho-post-area" role="form">
+                <form action="{{URL `post.save`}}" method="post">
+                    <div class="col-mb-12 col-tb-9" role="main">
+                        <p class="title">
+                            <label for="title" class="sr-only">标题</label>
+                            <input type="text" name="title" autocomplete="off" value="{{.Post.Title}}" placeholder="标题" class="w-100 text title" />
+                        </p>
+                        <p>
+                            <label for="text" class="sr-only">文章内容</label>
+                            <textarea style="height: 350px" autocomplete="off" id="text" name="content" class="w-100 mono">{{.Post.Content}}</textarea>
+                        </p>
+                        <p class="submit clearfix">
+                            <span class="right">
+                                <button type="button" class="btn primary" onclick="history.back();">取消</button>
+                                <button type="submit" name="id" value="{{.Post.Id}}" class="btn primary">
+                                {{if .New}}发布{{else}}更新{{end}}
+                                </button>
+                            </span>
+                        </p>
+                    </div>
+                    <div id="edit-secondary" class="col-mb-12 col-tb-3" role="complementary">
+                        <div id="tab-advance" class="tab-content">
+                            <section class="typecho-post-option" role="application">
+                                <label for="date" class="typecho-label">发布日期</label>
+                                <p><input class="typecho-date w-100" type="text" name="created" id="date" value="{{if not .New}}{{DateTime .Post.Created `2006-01-02 15:04`}}{{end}}"/></p>
+                            </section>
+                            <section class="typecho-post-option">
+                                {{if not .New}}
+                                <br>
+                                <p class="description">本文由 <a href="profile">{{User.Username}}</a> 撰写
+                                    <br>最后更新于 {{DateTime .Post.Updated `2006-01-02 15:04:05`}}</p>
+                                {{end}}
+                            </section>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{template "admin.footer" .}}
+    {{template "admin.flash" .}}
+    {{template "script" .}}
+</body>
+</html>
+{{end}}
