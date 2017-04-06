@@ -9,7 +9,7 @@ go get github.com/go-macaron/session
 go get github.com/jinzhu/gorm
 ```
 
-建议在 > GO 1.5 && Linux 环境运行
+建议在 GO >= 1.5 && Linux 环境运行
 
 ### 配置文件
 
@@ -18,7 +18,7 @@ go get github.com/jinzhu/gorm
     "debug": false,                  # 开启Debug记录
     "http_addr": "0.0.0.0:80",       # 内网监听端口
     "public_dir": "public",          # 静态文件目录
-    "secret_key": "!!!F4CK*Y0U!!!",  # Session密钥
+    "secret_key": "!!!F4CK*Y0U!!!",  # 加密KEY
     "admin": {
         "route": "admin",            # 后台路由
         "username": "admin",         # 初始用户名
@@ -43,9 +43,9 @@ go get github.com/jinzhu/gorm
 ![Screenshot][2]
 ![Screenshot][3]
 
-[1]: screenshot/browse.png
-[2]: screenshot/post.png
-[3]: screenshot/admin.png
+[1]: screenshots/browse.png
+[2]: screenshots/post.png
+[3]: screenshots/admin.png
 
 
 
