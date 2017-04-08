@@ -51,7 +51,7 @@
                                         <td>
                                             <a href="{{URL `post.edit` `:id` (.Id)}}">{{.Title}}</a>
                                             <a href="{{URL `post.edit` `:id` (.Id)}}" title="编辑 {{.Title}}"><i class="i-edit"></i></a>
-                                            <a href="post/edit" title="浏览 {{.Title}}" target="_blank"><i class="i-exlink"></i></a>
+                                            <a href="{{URL `post` `:id` (.Id)}}" title="浏览 {{.Title}}" target="_blank"><i class="i-exlink"></i></a>
                                         </td>
                                         <td>{{User.Username}}</td>
                                         <td>{{DateTime .Created `2006-01-02 15:04:05`}}</td>
