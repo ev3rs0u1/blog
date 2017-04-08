@@ -22,7 +22,7 @@
                         {{range RecentPosts}}
                             <li>
                                 <span>{{DateTime .Created `1.2`}}</span>
-                                <a href="post/edit" class="title" target="_blank">{{.Title}}</a>
+                                <a href="{{URL `post.edit` `:id` (.Id)}}" class="title" target="_blank">{{.Title}}</a>
                             </li>
                         {{end}}
                         </ul>
